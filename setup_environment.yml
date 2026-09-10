@@ -1,4 +1,6 @@
 ---
+# --- PLAY 1: System Setup and User Creation ---
+
 - name: System-Einrichtung und Benutzererstellung
   hosts: all
   become: yes
@@ -46,3 +48,18 @@
         groups: sudo
         append: yes
         state: present
+
+# --- PLAY 2: System Update and Upgrade ---
+
+- name: Update und Upgrade auf Ubuntu Target-Servern
+  hosts: all
+  become: yes
+  tasks:
+    - name: Paketlisten aktualisieren (apt update)
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Alle installierten Pakete aktualisieren (apt upgrade)
+      apt:
+        upgrade: dist
