@@ -1,8 +1,12 @@
-- name: Update all packages on Ubuntu clients
+- name: Update und Upgrade auf Ubuntu Target-Servern
   hosts: all
   become: yes
   tasks:
-    - name: Update apt cache and upgrade packages
+    - name: Paketlisten aktualisieren (apt update)
       apt:
         update_cache: yes
-        upgrade: safe
+        cache_valid_time: 3600
+
+    - name: Alle installierten Pakete aktualisieren (apt upgrade)
+      apt:
+        upgrade: dist
