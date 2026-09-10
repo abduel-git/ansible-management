@@ -1,0 +1,49 @@
+---
+- name: System-Einrichtung und Benutzererstellung
+  hosts: all
+  become: yes
+  vars:
+    # Ersetzen Sie die Platzhalter durch generierte Passwörter (SHA-512 Hash)
+    # Erstellen mit: python3 -c 'import crypt; print(crypt.crypt("MeinPasswort", crypt.mksalt(crypt.METHOD_SHA512)))'
+    user_passwords:
+      miki: "$6$rounds=656000$BeispielSalt$MikiGehashtesPasswort..."
+      abdu: "$6$rounds=656000$BeispielSalt$AbduGehashtesPasswort..."
+      myself: "$6$rounds=656000$BeispielSalt$MeinGehashtesPasswort..."
+
+  tasks:
+    - name: Erforderliche Pakete installieren
+      apt:
+        name:
+          - nano
+          - wireguard
+          - tcpdump
+          - git
+        state: present
+        update_cache: yes
+
+    - name: Benutzerkonto für Miki erstellen
+      user:
+        name: miki
+        password: "{{ user_passwords.miki }}"
+        shell: /bin/bash
+        groups: sudo
+        append: yes
+        state: present
+
+    - name: Benutzerkonto für Abdu erstellen
+      user:
+        name: abdu
+        password: "{{ user_passwords.abdu }}"
+        shell: /bin/bash
+        groups: sudo
+        append: yes
+        state: present
+
+    - name: Eigenes Benutzerkonto erstellen
+      user:
+        name: abderrahmane
+        password: "{{ user_passwords.myself }}"
+        shell: /bin/bash
+        groups: sudo
+        append: yes
+        state: present
