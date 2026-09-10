@@ -7,7 +7,7 @@
     user_passwords:
       miki: "$6$gjiKVaZbvRyba2wl$jENpLDrqfqVIpy0jZoQmkqNq/W.Quz7yTQlaCIYOHj/KRRBwvBWHjjN7hwMn0CSVfykMUBxaNmIvEoRfslI59."
       abdu: "$6$2QCL.Edq9Ap4DGWY$lWcFqbyhvQXgm5FWbFVoT5ObUVg3RWKV8OifELNLv2zNIStABCybvsBrvlvEzn9GAlszpzu20i.uGBGSTScK90"
-      myself: "$6$gjiKVaZbvRyba2wl$jENpLDrqfqVIpy0jZoQmkqNq/W.Quz7yTQlaCIYOHj/KRRBwvBWHjjN7hwMn0CSVfykMUBxaNmIvEoRfslI59."
+      ousama: "$6$gjiKVaZbvRyba2wl$jENpLDrqfqVIpy0jZoQmkqNq/W.Quz7yTQlaCIYOHj/KRRBwvBWHjjN7hwMn0CSVfykMUBxaNmIvEoRfslI59."
 
   tasks:
     - name: Erforderliche Pakete installieren (nano, wireguard, tcpdump, git)
