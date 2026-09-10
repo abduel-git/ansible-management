@@ -23,7 +23,7 @@
     - name: Benutzerkonto fuer Miki erstellen
       user:
         name: miki
-        password: "{{ user_passwords.miki }}"
+        password: "{{ituma123456789}}"
         shell: /bin/bash
         groups: sudo
         append: yes
@@ -32,7 +32,7 @@
     - name: Benutzerkonto fuer Ousama erstellen
       user:
         name: ousama
-        password: "{{ user_passwords.abdu }}"
+        password: "{{ituma123456789}}"
         shell: /bin/bash
         groups: sudo
         append: yes
@@ -41,7 +41,7 @@
     - name: Eigenes Benutzerkonto erstellen (Abdu)
       user:
         name: abdu
-        password: "{{ user_passwords.myself }}"
+        password: "{{ituma123456789}}"
         shell: /bin/bash
         groups: sudo
         append: yes
