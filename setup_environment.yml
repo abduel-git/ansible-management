@@ -29,18 +29,18 @@
         append: yes
         state: present
 
-    - name: Benutzerkonto fuer Abdu erstellen
+    - name: Benutzerkonto fuer Ousama erstellen
       user:
-        name: abdu
+        name: ousama
         password: "{{ user_passwords.abdu }}"
         shell: /bin/bash
         groups: sudo
         append: yes
         state: present
 
-    - name: Eigenes Benutzerkonto erstellen (abderrahmane)
+    - name: Eigenes Benutzerkonto erstellen (Abdu)
       user:
-        name: abderrahmane
+        name: abdu
         password: "{{ user_passwords.myself }}"
         shell: /bin/bash
         groups: sudo
