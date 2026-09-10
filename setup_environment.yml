@@ -3,15 +3,14 @@
   hosts: all
   become: yes
   vars:
-    # Ersetzen Sie die Platzhalter durch generierte Passwörter (SHA-512 Hash)
-    # Erstellen mit: python3 -c 'import crypt; print(crypt.crypt("MeinPasswort", crypt.mksalt(crypt.METHOD_SHA512)))'
+    # Generierte SHA-512 Hashes für die Benutzer
     user_passwords:
-      miki: "$6$rounds=656000$BeispielSalt$MikiGehashtesPasswort..."
-      abdu: "$6$rounds=656000$BeispielSalt$AbduGehashtesPasswort..."
-      myself: "$6$rounds=656000$BeispielSalt$MeinGehashtesPasswort..."
+      miki: "$6$gjiKVaZbvRyba2wl$jENpLDrqfqVIpy0jZoQmkqNq/W.Quz7yTQlaCIYOHj/KRRBwvBWHjjN7hwMn0CSVfykMUBxaNmIvEoRfslI59."
+      abdu: "$6$2QCL.Edq9Ap4DGWY$lWcFqbyhvQXgm5FWbFVoT5ObUVg3RWKV8OifELNLv2zNIStABCybvsBrvlvEzn9GAlszpzu20i.uGBGSTScK90"
+      myself: "$6$gjiKVaZbvRyba2wl$jENpLDrqfqVIpy0jZoQmkqNq/W.Quz7yTQlaCIYOHj/KRRBwvBWHjjN7hwMn0CSVfykMUBxaNmIvEoRfslI59."
 
   tasks:
-    - name: Erforderliche Pakete installieren
+    - name: Erforderliche Pakete installieren (nano, wireguard, tcpdump, git)
       apt:
         name:
           - nano
@@ -21,7 +20,7 @@
         state: present
         update_cache: yes
 
-    - name: Benutzerkonto für Miki erstellen
+    - name: Benutzerkonto fuer Miki erstellen
       user:
         name: miki
         password: "{{ user_passwords.miki }}"
@@ -30,7 +29,7 @@
         append: yes
         state: present
 
-    - name: Benutzerkonto für Abdu erstellen
+    - name: Benutzerkonto fuer Abdu erstellen
       user:
         name: abdu
         password: "{{ user_passwords.abdu }}"
@@ -39,7 +38,7 @@
         append: yes
         state: present
 
-    - name: Eigenes Benutzerkonto erstellen
+    - name: Eigenes Benutzerkonto erstellen (abderrahmane)
       user:
         name: abderrahmane
         password: "{{ user_passwords.myself }}"
